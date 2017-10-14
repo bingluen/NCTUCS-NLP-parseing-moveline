@@ -1,0 +1,12 @@
+{
+  "name": "Pre-HW1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bingluen/NTCUCS-NLP-parseing-moveline.git",
+  "author": "Erickson Zhuang <bingluen0224@gmail.com>",
+  "dependencies": {
+    "fs-extra": "^4.0.2",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
