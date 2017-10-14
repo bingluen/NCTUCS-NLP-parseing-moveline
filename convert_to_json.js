@@ -9,7 +9,7 @@ let lines = input.split(/\n/).map((line) => {
     return {
         lineId: split[0],
         roleId: split[1],
-        moiveId: split[2],
+        movieId: split[2],
         roleName: split[3],
         sentences: split[4]
     }
