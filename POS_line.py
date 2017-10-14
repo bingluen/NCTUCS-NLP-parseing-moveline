@@ -1,3 +1,4 @@
+# coding=UTF-8
 import json
 import sys
 import requests
@@ -6,13 +7,13 @@ filename = sys.argv[1]
 
 rawData = ''
 
-with open(sys.argv[1]) as source:
+with open(sys.argv[1], encoding='utf8') as source:
     rawData = json.load(source)
 
 results = [] 
 
 for line in rawData:
-    res = json.loads(requests.post('http://localhost:8999', data=line['sentences']).text)
+    res = json.loads(requests.post('http://localhost:8999', data=line['sentences'].encode('utf-8')).text)
     result = {
         'lineId': line['lineId'],
         'roleId': line['roleId'],
