@@ -15,7 +15,7 @@ let lines = input.split(/\n/).map((line) => {
     }
 })
 
-fs.writeJSONSync('move_lines.json', lines.splice(0, lines.length - 1))
+fs.writeJSONSync('after145000_move_lines.json', lines.splice(145000, lines.length - 1))
 
 // function promiseGetPOS(raw) {
 //     return rp({
