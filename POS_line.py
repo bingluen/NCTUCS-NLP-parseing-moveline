@@ -4,15 +4,17 @@ import sys
 import requests
 
 filename = sys.argv[1]
+outputdir = sys.argv[2]
 
 rawData = ''
 
 with open(sys.argv[1], encoding='utf8') as source:
     rawData = json.load(source)
 
-results = [] 
+results = []
 
-for line in rawData:
+for (index, line) in enumerate(rawData):
+    print(index, line['lineId'])
     res = json.loads(requests.post('http://localhost:8999', data=line['sentences'].encode('utf-8')).text)
     result = {
         'lineId': line['lineId'],
@@ -23,6 +25,11 @@ for line in rawData:
         'parsing': res
     }
     results.append(result)
+    if len(results) % 100 == 0:
+        with open(outputdir + '/output_' + str(int(index / 100) + 1) + '.json', 'w', encoding='utf-8') as output:
+            json.dump(results, output)
+        results = []
 
-with open('output.json', 'w') as output:
-    json.dump(result, output)
+# remaining
+with open(outputdir + '/output_' + str(int(index / 100) + 1) + '.json', 'w', encoding='utf-8') as output:
+    json.dump(results, output)
