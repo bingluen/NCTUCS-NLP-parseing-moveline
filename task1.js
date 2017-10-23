@@ -12,6 +12,8 @@ files.forEach(el => {
 
 	// Alias
 	let lines = rawJSON
+	
+	console.log('current file:', el)
 
 	lines.forEach(line => {
 		let tokenCollection = line.parsing.sentences
@@ -66,16 +68,18 @@ files.forEach(el => {
 					target.ref.push(line.lineId)
 				}
 			})
-
-			// Alias
-			let numLines = tf_idf_table.length
-
-			// Compute idf for each token
-			idf_table.forEach(token => {
-				token.idf = Math.log10(1.0 * numLines / token.ref.length)
-			})
-
 	})
+
+	console.log('current tf_idf_table length:', tf_idf_table.length)
+	console.log('current idf_table length:', idf_table.length)
+})
+
+// Alias
+let numLines = tf_idf_table.length
+
+// Compute idf for each token
+idf_table.forEach(token => {
+	token.idf = Math.log10(1.0 * numLines / token.ref.length)
 })
 
 // Compute tf-idf for each token on each lin
