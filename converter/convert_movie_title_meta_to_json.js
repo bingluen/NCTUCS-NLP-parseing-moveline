@@ -14,3 +14,5 @@ let lines = input.split(/\n/).map((line) => {
         gender: split[4]
     }
 })
+
+fs.writeJSONSync('movie_title_metadata.json', lines)

@@ -13,3 +13,5 @@ let lines = input.split(/\n/).map((line) => {
         conversation: split[3]
     }
 })
+
+fs.writeJSONSync('movie_conversations.json', lines)

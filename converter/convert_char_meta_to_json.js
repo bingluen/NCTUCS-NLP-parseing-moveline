@@ -15,3 +15,5 @@ let lines = input.split(/\n/).map((line) => {
         posCredits: split[5]
     }
 })
+
+fs.writeJSONSync('movie_character_metadata.json', lines)
